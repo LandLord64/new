@@ -1,0 +1,21 @@
+// Add to the top of your file (before the component)
+const storage = {
+  async set(key, value) {
+    try {
+      localStorage.setItem(key, value);
+    } catch (error) {
+      console.log('LocalStorage set:', key, value);
+    }
+  },
+  async get(key) {
+    try {
+      const value = localStorage.getItem(key);
+      return value ? { value } : null;
+    } catch (error) {
+      console.log('LocalStorage get:', key);
+      return null;
+    }
+  }
+};
+
+// Replace all window.storage calls with storage
